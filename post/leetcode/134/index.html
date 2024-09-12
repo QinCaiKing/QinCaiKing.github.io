@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>134.加油站 | QinCaiKing的个人博客</title><meta name="author" content="QinCaiKing"><meta name="copyright" content="QinCaiKing"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="134.加油站0.看下原题134.加油站 1.思路 从某一个地点开始油足够转完一圈，那么也就意味着在这圈中的任意一点时，当前油箱的油量均&gt;&#x3D;去往下一个地点的油量。那么就可以考虑双重循环判断。 即假设从第一点开始转圈能成功，那么就开始转 直到油不够到下一个地点，或者转成功了 如果转成功了，直接返回起点值 如果转失败了，从下一个起点开转。   这种方式比较容易写出代码，这里就不再写了，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="134.加油站">
+<meta property="og:url" content="https://qincaiking.github.io/post/leetcode/134/index.html">
+<meta property="og:site_name" content="QinCaiKing的个人博客">
+<meta property="og:description" content="134.加油站0.看下原题134.加油站 1.思路 从某一个地点开始油足够转完一圈，那么也就意味着在这圈中的任意一点时，当前油箱的油量均&gt;&#x3D;去往下一个地点的油量。那么就可以考虑双重循环判断。 即假设从第一点开始转圈能成功，那么就开始转 直到油不够到下一个地点，或者转成功了 如果转成功了，直接返回起点值 如果转失败了，从下一个起点开转。   这种方式比较容易写出代码，这里就不再写了，">
+<meta property="og:locale">
+<meta property="og:image" content="https://qincaiking.github.io/img/ava.jpg">
+<meta property="article:published_time" content="2024-09-12T07:00:00.000Z">
+<meta property="article:modified_time" content="2024-09-12T07:00:00.000Z">
+<meta property="article:author" content="QinCaiKing">
+<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="数组&#x2F;字符串">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="Middle题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://qincaiking.github.io/img/ava.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://qincaiking.github.io/post/leetcode/134/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Error',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: QinCaiKing","link":"Link: ","source":"Source: QinCaiKing的个人博客","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '134.加油站',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-09-12 15:00:00'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="QinCaiKing的个人博客"><span class="site-name">QinCaiKing的个人博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">134.加油站</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-09-12T07:00:00.000Z" title="Created 2024-09-12 15:00:00">2024-09-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-09-12T07:00:00.000Z" title="Updated 2024-09-12 15:00:00">2024-09-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/">力扣刷题</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/%E5%8A%9B%E6%89%A3%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%85%B8150%E9%A2%98/">力扣面试经典150题</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="134.加油站"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h3 id="134-加油站"><a href="#134-加油站" class="headerlink" title="134.加油站"></a>134.加油站</h3><h4 id="0-看下原题"><a href="#0-看下原题" class="headerlink" title="0.看下原题"></a>0.看下原题</h4><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/gas-station/description/">134.加油站</a><br><img src="/img/leetcode/134/134_detail.png" alt="原题"></p>
+<h4 id="1-思路"><a href="#1-思路" class="headerlink" title="1.思路"></a>1.思路</h4><ul>
+<li>从某一个地点开始油足够转完一圈，那么也就意味着在<strong>这圈中的任意一点时，当前油箱的油量均&gt;&#x3D;去往下一个地点的油量</strong>。那么就可以考虑双重循环判断。<ul>
+<li>即假设从第一点开始转圈能成功，那么就开始转</li>
+<li>直到油不够到下一个地点，或者转成功了<ul>
+<li>如果转成功了，直接返回起点值</li>
+<li>如果转失败了，从下一个起点开转。</li>
+</ul>
+</li>
+<li>这种方式比较容易写出代码，这里就不再写了，但是这种方式的时间复杂度要<code>O(n^2)</code>，对于这道题而言，题目中明显提到，最多情况下有10^5个加油站，那么如此的时间复杂度就难以完成了，必定超时。</li>
+</ul>
+</li>
+<li>那么就要考虑一种时间复杂度比较低的方法。其实第一种方式的思路没有问题，<strong>在这圈中的任意一点时，加油后油箱的油量均&gt;&#x3D;去往下一个地点的油量</strong>，这个判断依旧是解题思路的核心所在。<ul>
+<li>实际上，如果从头到尾，所有时刻的<strong>油箱的油量均&gt;&#x3D;去往下一个地点的油量</strong>，那么一次遍历即可得出答案，即时间复杂度为<code>O(1)</code>。但是并不会每次都一次遍历通过，因此在出现油不足以去下个加油站时，这时就要考虑，如果有解的话，那么解是在当前位置的前面还是后面。也就是将结果范围缩小。</li>
+<li>答案显而易见，是后面。<ul>
+<li>假设当前加油站位置为<code>X</code>，那么在<code>0~X</code><strong>这段范围内的的任意一点时，加油后油箱的油量均&gt;&#x3D;去往下一个地点的油量</strong>，并且<strong>在X处加油后的油量&lt;去往下一个地点的油量</strong>。</li>
+<li>这里假设加油前油量为<code>a</code>，那么也就是<code>a+goat[X]-cost[X]&lt;0</code>。</li>
+<li>倘若在<code>0~X</code>这段范围内有一个<code>Y</code>是解，那么也就是说从<code>Y</code><strong>出发到任意一点的时，加油后的油量均&gt;&#x3D;去往下一个地点的油量</strong>，当然也包括<code>X</code>。</li>
+<li>在假设从<code>0</code>位到<code>Y</code>位时油量剩余为b，那么根据上述可以判断出<code>b&gt;0</code>。所以<code>a+goat[x]-cost[X]-b&lt;0</code>。无法满足从<code>Y</code>能成功到达任意一点的要求，最起码<code>X</code>就到不了。</li>
+<li>所以，答案是后面。</li>
+</ul>
+</li>
+<li>缩小了范围之后就要考虑什么情况能够完整的转一圈，如果缩小范围了，但是判断依旧是再真正的转一圈这种判断，那么时间复杂度依旧没有下降。这里要利用上<code>a</code>，这个<code>a</code>不能白算。如果我开车可以成功转一圈，那么也就意味着，我跑一圈后，油箱里最起码还有点油，或者刚好用完。<ul>
+<li>根据缩小的范围来看，新起点就是<code>X+1</code>，那么<strong>从0处行驶到X+1处</strong>，实际上油是不够的，那么如果<code>X+1</code>是解，我<strong>从X+1行驶到0处</strong>，油箱里剩的油要超出从<strong>从0处行驶到X+1处</strong>欠的这些油。</li>
+<li>即假设<strong>从X+1行驶到0处</strong>时油箱里有油<code>c</code>，那么<code>c+a+goat[X]-cost[X]&gt;0</code>，如果不满足这个条件，那么答案就是没有解。</li>
+<li>因此重复上述判断不断缩小范围，当到达最后一个加油站时，来判断上述的<code>c+a+goat[X]-cost[X]&gt;0</code>，如果否，则无解，如果是，则解是缩小范围后的起点。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-代码"><a href="#2-代码" class="headerlink" title="2.代码"></a>2.代码</h4> <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">CanCompleteCircuit</span>(<span class="params"><span class="built_in">int</span>[] gas, <span class="built_in">int</span>[] cost</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 位置</span></span><br><span class="line">        <span class="keyword">var</span> X = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 0~&gt;X的油箱油量</span></span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// X-&gt;i+1的油箱油量</span></span><br><span class="line">        <span class="keyword">var</span> curGas = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; gas.Length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 向i处开车</span></span><br><span class="line">            curGas += (gas[i] - cost[i]);</span><br><span class="line">            <span class="comment">// 代表解要在i+1之后出现</span></span><br><span class="line">            <span class="keyword">if</span> (curGas &lt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                X = i + <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 0-&gt; X的油箱油量叠加</span></span><br><span class="line">                a += curGas;</span><br><span class="line">                <span class="comment">// X-&gt;i+1油箱油量归零，从头开始计算</span></span><br><span class="line">                curGas = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 判断是否满足总油量大于总消耗量</span></span><br><span class="line">        <span class="keyword">return</span> curGas + a &gt; <span class="number">0</span> ? X : <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://QinCaiKing.github.io">QinCaiKing</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://qincaiking.github.io/post/leetcode/134/">https://qincaiking.github.io/post/leetcode/134/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/leetcode/">leetcode</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E7%BB%84-%E5%AD%97%E7%AC%A6%E4%B8%B2/">数组/字符串</a><a class="post-meta__tags" href="/tags/%E8%B4%AA%E5%BF%83/">贪心</a><a class="post-meta__tags" href="/tags/Middle%E9%A2%98/">Middle题</a></div><div class="post_share"><div class="social-share" data-image="/img/ava.jpg" data-sites="facebook,twitter,wechat,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/post/leetcode/238/" title="238.除自身以外数组的乘积"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next</div><div class="next_info">238.除自身以外数组的乘积</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/post/leetcode/122/" title="122.买卖股票的最佳时机 II"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-03</div><div class="title">122.买卖股票的最佳时机 II</div></div></a></div><div><a href="/post/leetcode/55/" title="55.跳跃游戏"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-03</div><div class="title">55.跳跃游戏</div></div></a></div><div><a href="/post/leetcode/121/" title="121.买卖股票的最佳时机"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-02</div><div class="title">121.买卖股票的最佳时机</div></div></a></div><div><a href="/post/leetcode/238/" title="238.除自身以外数组的乘积"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-11</div><div class="title">238.除自身以外数组的乘积</div></div></a></div><div><a href="/post/leetcode/189/" title="189.轮转数组"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-02</div><div class="title">189.轮转数组</div></div></a></div><div><a href="/post/leetcode/274/" title="274.H指数"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-09-03</div><div class="title">274.H指数</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">QinCaiKing</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/QinCaiKing"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/QinCaiKing" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:talon85394@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">这里是芹菜King的个人博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#134-%E5%8A%A0%E6%B2%B9%E7%AB%99"><span class="toc-number">1.</span> <span class="toc-text">134.加油站</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0-%E7%9C%8B%E4%B8%8B%E5%8E%9F%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">0.看下原题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.</span> <span class="toc-text">1.思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BB%A3%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text">2.代码</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/leetcode/134/" title="134.加油站">134.加油站</a><time datetime="2024-09-12T07:00:00.000Z" title="Created 2024-09-12 15:00:00">2024-09-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/leetcode/238/" title="238.除自身以外数组的乘积">238.除自身以外数组的乘积</a><time datetime="2024-09-11T07:00:00.000Z" title="Created 2024-09-11 15:00:00">2024-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/leetcode/380/" title="380.O(1) 时间插入、删除和获取随机元素">380.O(1) 时间插入、删除和获取随机元素</a><time datetime="2024-09-11T07:00:00.000Z" title="Created 2024-09-11 15:00:00">2024-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/leetcode/274/" title="274.H指数">274.H指数</a><time datetime="2024-09-03T09:00:00.000Z" title="Created 2024-09-03 17:00:00">2024-09-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/post/leetcode/45/" title="45.跳跃游戏 II">45.跳跃游戏 II</a><time datetime="2024-09-03T07:30:00.000Z" title="Created 2024-09-03 15:30:00">2024-09-03</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By QinCaiKing</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://qincaiking.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Toggle Between Traditional Chinese And Simplified Chinese">简</button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
